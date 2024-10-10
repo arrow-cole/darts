@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <!--meta name="viewport" content="width=device-width, initial-scale=1.0"-->
+    <title>Darts Scoreboard</title>
+    <style>
+        html {
+            overflow: hidden;
+            margin: 0;
+        }
+        window {
+            overflow: hidden;
+            margin: 0;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            overflow: hidden;
+        }
+        canvas {
+            background-color: #fff;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="dartboard"></canvas>
+<script src="js/hit.js"></script>
+<script src="js/main.js"></script>
+<script src="js/button.js"></script>
+<script src="js/score.js"></script>
+<script src="js/board.js"></script>
+<script>init();</script>
+
+</body>
+</html>
