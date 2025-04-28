@@ -1,6 +1,3 @@
-const boardRadius = 250;
-const centerX = window.innerWidth/2;
-const centerY = window.innerHeight/2;
 const numbers = [20, 1, 18, 4, 13, 6, 10, 15, 2, 17, 3, 19, 7, 16, 8, 11, 14, 9, 12, 5];
 
 function drawCircle(x, y, radius, color) {
@@ -28,7 +25,7 @@ function drawRing(innerRadius, outerRadius, startAngle, endAngle, color) {
 }
 function drawDartboard() {
     // Black frame for numbers
-    drawCircle(centerX, centerY, boardRadius * 1.2, colors.black);
+    drawCircle(centerX, centerY, boardRadius * 1.25, colors.black);
     let angle = -Math.PI / 2 + Math.PI / 20;  // Aligned with the 20 sector
     const angleIncrement = Math.PI / 10;  // 36 degrees per sector
     // Draw 20 segments
@@ -63,11 +60,25 @@ function drawDartboard() {
     drawCircle(centerX, centerY, boardRadius * 0.06, colors.innerBull);
     // Numbers on the black frame
     ctx.fillStyle = colors.white;
+    ctx.font = `${boardRadius * 0.08}px Arial`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
     angle = -Math.PI / 2;
     for (let i = 0; i < 20; i++) {
-        let x = centerX + Math.cos(angle) * boardRadius * 1.1;
-        let y = centerY + Math.sin(angle) * boardRadius * 1.1;
+        let x = centerX + Math.cos(angle) * boardRadius * 1.15;
+        let y = centerY + Math.sin(angle) * boardRadius * 1.15;
         ctx.fillText(numbers[i], x, y);
         angle += angleIncrement;
     }
 }
+
+window.addEventListener('resize', () => {
+    // Update board dimensions
+    boardRadius = Math.min(window.innerWidth, window.innerHeight) * 0.45;
+    centerX = window.innerWidth/2;
+    centerY = window.innerHeight/2;
+    
+    // Clear and redraw the board
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawDartboard();
+});
